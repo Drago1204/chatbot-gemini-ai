@@ -7,14 +7,22 @@ export function Messages({ role, content }: Message) {
   return (
     <MathJaxContext>
       <div
-        className={`rounded-lg p-4 mb-3 ${
+        className={`rounded-lg flex flex-col p-4 mb-2 ${
           role === "user"
-            ? "bg-blue-200 text-blue-700"
-            : "bg-green-200 text-green-700"
+            ? "bg-blue-200 text-black self-start text-right"
+            : "bg-cyan-800 text-white self-end text-left"
         }`}
       >
+        <span
+          className={`text-xs mb-2 ${
+            role === "user"
+              ? "text-right"
+              : "text-left"
+          }`}
+        >
+          {role === "user" ? "Tú" : "Gemini"}
+        </span>
         <p>
-          {role === "user" ? "Tú: " : "Gemini AI: "}
           <MathJax>
             <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
           </MathJax>
