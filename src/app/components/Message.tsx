@@ -2,8 +2,28 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Message } from "ai";
 import Image from "next/image";
+import copy from "clipboard-copy";
+import { useState } from "react";
 
 export function Messages({ role, content }: Message) {
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyClick = async () => {
+    try {
+      await copy(content);
+      setIsCopied(true);
+
+      // Restablecer isCopied a false después de 2 segundos
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } catch (error) {
+      console.error("Failed to copy text to clipboard", error);
+    }
+  };
+  const avatarAI = "/img/gemini.png";
+  const avatarUser = "/img/avatar.jpg";
+
   return (
     <div className={`chat ${role === "user" ? "chat-end" : "chat-start"}`}>
       <div className="chat-image avatar">
@@ -12,11 +32,7 @@ export function Messages({ role, content }: Message) {
             width={500}
             height={500}
             alt="Avatar"
-            src={
-              role === "assistant"
-                ? "/img/gemini.png"
-                : "/img/avatar.jpg"
-            }
+            src={role === "assistant" ? avatarAI : avatarUser}
           />
         </div>
       </div>
@@ -33,6 +49,11 @@ export function Messages({ role, content }: Message) {
         <p>
           <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
         </p>
+      </div>
+      <div className="chat-footer mt-2 opacity-50">
+        <button onClick={handleCopyClick}>
+          {isCopied ? "¡Copiado!" : "Copiar"}
+        </button>
       </div>
     </div>
   );

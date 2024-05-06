@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ChatUI by Gemini AI",
+  title: "ChatUI",
   description: "ChatBot with Gemini AI",
 };
 
