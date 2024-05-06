@@ -1,33 +1,39 @@
-import { MathJaxContext, MathJax } from "better-react-mathjax";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Message } from "ai";
+import Image from "next/image";
 
 export function Messages({ role, content }: Message) {
   return (
-    <MathJaxContext>
-      <div
-        className={`rounded-lg flex flex-col p-4 mb-2 ${
-          role === "user"
-            ? "bg-blue-200 text-black self-start text-right"
-            : "bg-cyan-800 text-white self-end text-left"
-        }`}
-      >
+    <div className={`chat ${role === "user" ? "chat-end" : "chat-start"}`}>
+      <div className="chat-image avatar">
+        <div className="w-10 rounded-full">
+          <Image
+            width={500}
+            height={500}
+            alt="Avatar"
+            src={
+              role === "assistant"
+                ? "/img/gemini.png"
+                : "/img/avatar.jpg"
+            }
+          />
+        </div>
+      </div>
+      <div className="chat-header">
         <span
           className={`text-xs mb-2 ${
-            role === "user"
-              ? "text-right"
-              : "text-left"
+            role === "user" ? "text-right" : "text-left"
           }`}
         >
           {role === "user" ? "Tú" : "Gemini"}
         </span>
+      </div>
+      <div className="chat-bubble">
         <p>
-          <MathJax>
-            <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
-          </MathJax>
+          <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
         </p>
       </div>
-    </MathJaxContext>
+    </div>
   );
 }

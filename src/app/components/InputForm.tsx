@@ -1,15 +1,22 @@
-// InputForm.js
 import { InputFormProps } from "../interfaces";
 
-export const InputForm: React.FC<InputFormProps> = ({ input, handleInputChange, handleSubmit }) => {
+export const InputForm = ({
+  input,
+  handleInputChange,
+  handleSubmit,
+}: InputFormProps) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        className="w-full rounded-lg py-3 px-4 text-black bg-gray-300 mt-3 outline-none"
-        value={input}
-        placeholder="Escribe algo..."
-        onChange={handleInputChange}
-      />
+    <form className="form-control m-5 items-center" onSubmit={handleSubmit}>
+      <div>
+        <input
+          type="text"
+          className="input input-bordered flex-grow"
+          value={input}
+          placeholder="Escribe algo..."
+          onChange={handleInputChange}
+          required
+        />
+      </div>
     </form>
   );
-}
+};

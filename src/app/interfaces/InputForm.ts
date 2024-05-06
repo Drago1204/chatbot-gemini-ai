@@ -1,8 +1,9 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
+import { ChatRequestOptions } from "ai";
 
 
 export interface InputFormProps {
   input: string;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (event: FormEvent) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>, chatRequestOptions?: ChatRequestOptions) => void;
 }
