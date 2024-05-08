@@ -12,7 +12,7 @@ export function MessageList({ messages }: MessageListProps) {
     }
   }, [messages]);
   return (
-    <section className="pb-8 flex-grow overflow-auto no-scrollbar">
+    <section className="pb-8 rounded-3xl shadow-2xl bg-neutral flex-grow overflow-auto no-scrollbar">
       {messages.map((m) => (
         <div key={m.id}>
           <Messages id={m.id} role={m.role} content={m.content} />

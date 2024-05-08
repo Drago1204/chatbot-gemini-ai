@@ -6,11 +6,11 @@ export const InputForm = ({
   handleSubmit,
 }: InputFormProps) => {
   return (
-    <form className="form-control m-5 items-center" onSubmit={handleSubmit}>
-      <div>
+    <form className="form-control my-5 items-center" onSubmit={handleSubmit}>
+      <div className="w-full mx-auto">
         <input
           type="text"
-          className="input input-bordered flex-grow"
+          className="input input-primary input-bordered rounded-3xl w-full shadow-2xl flex-grow"
           value={input}
           placeholder="Escribe algo..."
           onChange={handleInputChange}

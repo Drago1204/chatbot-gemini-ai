@@ -25,9 +25,9 @@ export function Messages({ role, content }: Message) {
   const avatarUser = "/img/avatar.jpg";
 
   return (
-    <div className={`chat ${role === "user" ? "chat-end" : "chat-start"}`}>
+    <div className={`chat mx-2 ${role === "user" ? "chat-end" : "chat-start"}`}>
       <div className="chat-image avatar">
-        <div className="w-10 rounded-full">
+        <div className="w-10 shadow-2xl rounded-full">
           <Image
             width={500}
             height={500}
@@ -45,8 +45,8 @@ export function Messages({ role, content }: Message) {
           {role === "user" ? "Tú" : "Gemini"}
         </span>
       </div>
-      <div className="chat-bubble">
-        <p>
+      <div className="chat-bubble bg-base-200 shadow-2xl">
+        <p className="p-2">
           <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
         </p>
       </div>

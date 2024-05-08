@@ -1,3 +1,4 @@
+export * from './ChatBody';
 export * from './Header';
 export * from './InputForm';
 export * from './Message';

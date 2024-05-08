@@ -3,7 +3,7 @@ import Image from "next/image";
 export function WelcomeMessage() {
   return (
     <div className="flex items-center justify-center h-screen">
-      <div className="card w-96 glass">
+      <div className="card rounded-3xl shadow-2xl w-96 glass">
         <div className="card-body">
           <h2 className="card-title">¡Bienvenido a ChatUI!</h2>
           <p>
