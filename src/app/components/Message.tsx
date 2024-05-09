@@ -46,9 +46,9 @@ export function Messages({ role, content }: Message) {
         </span>
       </div>
       <div className="chat-bubble bg-base-200 shadow-2xl">
-        <p className="p-2">
+        <div className="p-2">
           <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
-        </p>
+        </div>
       </div>
       <div className="chat-footer mt-2 opacity-50">
         <button onClick={handleCopyClick}>
