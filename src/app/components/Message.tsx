@@ -4,6 +4,8 @@ import { Message } from "ai";
 import Image from "next/image";
 import copy from "clipboard-copy";
 import { useState } from "react";
+import rehypeRaw from "rehype-raw";
+import rehypeHighlight from "rehype-highlight";
 
 export function Messages({ role, content }: Message) {
   const [isCopied, setIsCopied] = useState(false);
@@ -45,9 +47,14 @@ export function Messages({ role, content }: Message) {
           {role === "user" ? "Tú" : "Gemini"}
         </span>
       </div>
-      <div className="chat-bubble bg-base-200 shadow-2xl">
-        <div className="p-2">
-          <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
+      <div className="chat-bubble overflow-x bg-base-200 shadow-2xl">
+        <div className="p-2 whitespace-pre-line overflow-x-auto">
+          <Markdown
+            remarkPlugins={[remarkGfm,]}
+            rehypePlugins={[rehypeRaw, rehypeHighlight]}
+          >
+            {content}
+          </Markdown>
         </div>
       </div>
       <div className="chat-footer mt-2 opacity-50">
