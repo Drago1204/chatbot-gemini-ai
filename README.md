@@ -1,6 +1,6 @@
 # ChatUI
 
-ChatUI is a chatbot built using Next.js, Vercel's AI SDK, Tailwind, Daisy UI, and Google's Gemini model as the AI.
+ChatUI is a chatbot built using Next.js, Vercel's AI SDK, Tailwind, Daisy UI, and Google's Gemini model as the AI
 
 ## Demo
 
